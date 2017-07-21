@@ -1,0 +1,13 @@
+---
+  - name: wget epel rpm
+    get_url: 
+     url: http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm
+     dest: /tmp/epel-release-7-9.noarch.rpm 
+
+  - name: install epel repo
+    yum: 
+     name: /tmp/epel-release-7-9.noarch.rpm 
+     state: present
+
+  - include: selinux.yml
+  - include: ntp.yml 

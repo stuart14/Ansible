@@ -1,0 +1,24 @@
+---
+- name: instal NodeJS
+  hosts: all
+
+  tasks:
+  - name: install epl repo
+    get_url: 
+     url: http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm
+     dest: /tmp/epel-release-7-9.noarch.rpm 
+    register: IR
+
+  - name: install epel repo
+    yum: 
+     name: /tmp/epel-release-7-9.noarch.rpm 
+     state: installed
+    register: IPR
+
+  - name: list IR
+    debug: 
+     msg: "{{IR}}"
+     
+  - name: List IPR
+    debug: 
+     msg: "{{IPR}}"
